@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 import ScrollReveal from "@/components/ScrollReveal";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fasterkart.tech'),
@@ -35,8 +37,10 @@ export default function RootLayout({
     <ClerkProvider appearance={dark}>
       <html lang="en">
         <body>
-          <ScrollReveal />
-          {children}
+          <SmoothScroll>
+            <ScrollReveal />
+            {children}
+          </SmoothScroll>
         </body>
       </html>
     </ClerkProvider>
