@@ -22,7 +22,7 @@ const footerLinks = {
     { name: 'Blog', href: '#' }
   ],
   Contact: [
-    { name: 'tech@fasterkart.com', href: 'mailto:tech@fasterkart.com' },
+    { name: 'contact@rgbtechagency.com', href: 'mailto:contact@rgbtechagency.com' },
     { name: '+91 96783 30237', href: 'tel:+919678330237' },
     { name: 'Lokhara Chariali, NH 27, Lokhra Rd, Lokhra, Guwahati, Assam 781040', href: '#' },
     { name: 'Mon–Sat, 9am–7pm', href: '#' }

@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fasterkart.tech'),
+  metadataBase: new URL('https://rgbtechagency.com'),
   title: "RGB Tech | Digital Transformation & Software Development Agency",
   description:
     "RGB Tech (under RGB Graphics Design and Solution) builds modern websites, mobile apps, AI solutions, and enterprise software that transform businesses and accelerate digital growth.",

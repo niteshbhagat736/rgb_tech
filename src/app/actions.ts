@@ -36,7 +36,7 @@ export async function sendContactEmail(formData: FormData): Promise<SendEmailRes
   try {
     const data = await resend.emails.send({
       from: 'RGB Tech Contact <onboarding@resend.dev>',
-      to: 'tech@fasterkart.com', // ImprovMX forwards this to niteshbhagat726@gmail.com
+      to: 'contact@rgbtechagency.com', // Forward to your inbox via ImprovMX or Resend
       replyTo: email,
       subject: `New Contact Inquiry from ${name} [RGB Tech]`,
       text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,

@@ -145,7 +145,7 @@ export default function Navbar() {
             Let&apos;s Talk <ArrowRight size={16} />
           </Link>
           <div className={styles.drawerMeta}>
-            <span>tech@fasterkart.com</span>
+            <span>contact@rgbtechagency.com</span>
             <span>+91 96783 30237</span>
           </div>
         </div>

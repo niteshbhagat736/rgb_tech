@@ -164,7 +164,7 @@ export default function PrivacyPolicyPage() {
                 fontSize: '14px',
               }}>
                 <div><strong>Entity:</strong> RGB Tech (A brand under RGB Graphics Design and Solution)</div>
-                <div><strong>Email:</strong> <a href="mailto:tech@fasterkart.com" style={{ color: '#818cf8', textDecoration: 'none' }}>tech@fasterkart.com</a></div>
+                <div><strong>Email:</strong> <a href="mailto:contact@rgbtechagency.com" style={{ color: '#818cf8', textDecoration: 'none' }}>contact@rgbtechagency.com</a></div>
                 <div><strong>Phone:</strong> +91 96783 30237</div>
                 <div><strong>Location:</strong> Lokhara Chariali, NH 27, Lokhra Rd, Lokhra, Guwahati, Assam 781040</div>
               </div>
