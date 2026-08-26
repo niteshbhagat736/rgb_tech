@@ -361,48 +361,49 @@ export default function AdminDashboard() {
           </div>
         </header>
 
-        <main className={`container ${styles.mainContent}`} style={{ display: 'flex', justifyContent: 'center', paddingTop: '60px' }}>
+        <main className={`container ${styles.mainContent}`} style={{ display: 'flex', justifyContent: 'center', paddingTop: '40px' }}>
           <div style={{
             background: 'rgba(255, 255, 255, 0.02)',
             border: '1px solid rgba(255, 255, 255, 0.08)',
             borderRadius: '24px',
-            padding: '48px 36px',
+            padding: '36px 24px',
             maxWidth: '540px',
+            width: '100%',
             textAlign: 'center',
             backdropFilter: 'blur(16px)',
           }}>
             <div style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '20px',
+              width: '56px',
+              height: '56px',
+              borderRadius: '16px',
               background: 'rgba(239, 68, 68, 0.1)',
               color: '#f87171',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              marginBottom: '20px',
+              marginBottom: '16px',
             }}>
-              <Lock size={32} />
+              <Lock size={28} />
             </div>
-            <h2 style={{ fontSize: '24px', color: '#fff', marginBottom: '12px' }}>
+            <h2 style={{ fontSize: '22px', color: '#fff', marginBottom: '12px' }}>
               Access Authorization Required
             </h2>
-            <p style={{ color: 'var(--color-text-dim)', fontSize: '15px', lineHeight: 1.6, marginBottom: '24px' }}>
+            <p style={{ color: 'var(--color-text-dim)', fontSize: '14px', lineHeight: 1.6, marginBottom: '20px' }}>
               Your account (<strong>{user?.primaryEmailAddress?.emailAddress}</strong>) is authenticated, but has not been granted Host Admin or Sub-Admin access.
             </p>
             <div style={{
               background: 'rgba(99, 102, 241, 0.08)',
               border: '1px solid rgba(99, 102, 241, 0.2)',
               borderRadius: '12px',
-              padding: '16px',
+              padding: '14px',
               fontSize: '13px',
               color: '#c7d2fe',
               textAlign: 'left',
-              marginBottom: '24px',
+              marginBottom: '20px',
             }}>
               💡 <strong>Host Admin:</strong> Please ensure your Gmail address is set as <code>ADMIN_EMAIL</code> in <code>.env.local</code> and restart the server, or ask the Host Admin to authorize your account.
             </div>
-            <button onClick={checkUserRole} className={styles.primaryBtn} style={{ margin: '0 auto' }}>
+            <button onClick={checkUserRole} className={styles.primaryBtn} style={{ margin: '0 auto', width: '100%', justifyContent: 'center' }}>
               <RefreshCw size={16} /> Re-check Authorization Status
             </button>
           </div>
@@ -419,7 +420,7 @@ export default function AdminDashboard() {
       {toast && (
         <div className={`${styles.toast} ${toast.type === 'success' ? styles.toastSuccess : styles.toastError}`}>
           {toast.type === 'success' ? <CheckCircle2 size={18} /> : <AlertTriangle size={18} />}
-          {toast.message}
+          <span>{toast.message}</span>
         </div>
       )}
 
@@ -439,13 +440,13 @@ export default function AdminDashboard() {
                 RGB<span>Admin</span>
               </Link>
               <span className={`${styles.roleBadge} ${userRole === 'admin' ? styles.roleAdmin : styles.roleSubAdmin}`}>
-                {userRole === 'admin' ? 'Host Super Admin' : 'Sub Admin'}
+                {userRole === 'admin' ? 'Host Admin' : 'Sub Admin'}
               </span>
             </div>
 
             <div className={styles.headerActions}>
               <Link href="/portfolio" target="_blank" className={styles.navLink}>
-                View Live Site <ExternalLink size={14} />
+                <span className={styles.navLinkText}>View Live Site</span> <ExternalLink size={14} />
               </Link>
               {isLoaded && <UserButton />}
             </div>
@@ -459,82 +460,84 @@ export default function AdminDashboard() {
         <div className={styles.statsGrid}>
           <div className={styles.statCard}>
             <div className={styles.statIcon}>
-              <FolderGit2 size={24} />
+              <FolderGit2 size={22} />
             </div>
-            <div>
+            <div className={styles.statContent}>
               <h3 className={styles.statValue}>{projects.length}</h3>
-              <p className={styles.statLabel}>Total Projects ({liveCount} Live)</p>
+              <p className={styles.statLabel}>Projects ({liveCount} Live)</p>
             </div>
           </div>
 
           <div className={styles.statCard}>
             <div className={styles.statIcon} style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa' }}>
-              <Layers size={24} />
+              <Layers size={22} />
             </div>
-            <div>
+            <div className={styles.statContent}>
               <h3 className={styles.statValue}>{categories.length}</h3>
-              <p className={styles.statLabel}>Active Categories</p>
+              <p className={styles.statLabel}>Categories</p>
             </div>
           </div>
 
           {userRole === 'admin' && (
             <div className={styles.statCard}>
               <div className={styles.statIcon} style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#34d399' }}>
-                <Users size={24} />
+                <Users size={22} />
               </div>
-              <div>
+              <div className={styles.statContent}>
                 <h3 className={styles.statValue}>{subAdminsCount || 1}</h3>
-                <p className={styles.statLabel}>Authorized Team</p>
+                <p className={styles.statLabel}>Team Members</p>
               </div>
             </div>
           )}
 
           <div className={styles.statCard}>
             <div className={styles.statIcon} style={{ background: 'rgba(245, 158, 11, 0.1)', color: '#fbbf24' }}>
-              <Database size={24} />
+              <Database size={22} />
             </div>
-            <div>
+            <div className={styles.statContent}>
               <h3 className={styles.statValue}>Atlas</h3>
               <p className={styles.statLabel}>MongoDB Cloud</p>
             </div>
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className={styles.tabs}>
-          <button
-            className={`${styles.tabBtn} ${activeTab === 'projects' ? styles.tabBtnActive : ''}`}
-            onClick={() => setActiveTab('projects')}
-          >
-            <FolderGit2 size={16} /> Portfolio Manager
-          </button>
-          
-          {userRole === 'admin' && (
+        {/* Tab Navigation (Horizontally scrollable on mobile) */}
+        <div className={styles.tabsWrapper}>
+          <div className={styles.tabs}>
             <button
-              className={`${styles.tabBtn} ${activeTab === 'subadmins' ? styles.tabBtnActive : ''}`}
-              onClick={() => setActiveTab('subadmins')}
+              className={`${styles.tabBtn} ${activeTab === 'projects' ? styles.tabBtnActive : ''}`}
+              onClick={() => setActiveTab('projects')}
             >
-              <Users size={16} /> Sub-Admin Access ({users.length})
+              <FolderGit2 size={16} /> <span>Portfolio Manager</span>
             </button>
-          )}
+            
+            {userRole === 'admin' && (
+              <button
+                className={`${styles.tabBtn} ${activeTab === 'subadmins' ? styles.tabBtnActive : ''}`}
+                onClick={() => setActiveTab('subadmins')}
+              >
+                <Users size={16} /> <span>Sub-Admin Access ({users.length})</span>
+              </button>
+            )}
 
-          {userRole === 'admin' && (
-            <button
-              className={`${styles.tabBtn} ${activeTab === 'system' ? styles.tabBtnActive : ''}`}
-              onClick={() => setActiveTab('system')}
-            >
-              <Database size={16} /> Database & Sync
-            </button>
-          )}
+            {userRole === 'admin' && (
+              <button
+                className={`${styles.tabBtn} ${activeTab === 'system' ? styles.tabBtnActive : ''}`}
+                onClick={() => setActiveTab('system')}
+              >
+                <Database size={16} /> <span>Database & Sync</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* TAB 1: Projects Manager */}
         {activeTab === 'projects' && (
           <div>
             <div className={styles.sectionBar}>
-              <div>
+              <div className={styles.sectionHeading}>
                 <h2 className={styles.sectionTitle}>Manage Portfolio Projects</h2>
-                <p style={{ color: 'var(--color-text-dim)', margin: '4px 0 0', fontSize: '14px' }}>
+                <p className={styles.sectionSub}>
                   Create, edit, toggle visibility (Live / Unlive), and organize client projects.
                 </p>
               </div>
@@ -545,113 +548,188 @@ export default function AdminDashboard() {
                   className={styles.secondaryBtn}
                   disabled={loading || actionLoading}
                 >
-                  <RefreshCw size={15} /> Refresh
+                  <RefreshCw size={15} /> <span>Refresh</span>
                 </button>
                 <button onClick={handleOpenAdd} className={styles.primaryBtn}>
-                  <Plus size={16} /> Add New Project
+                  <Plus size={16} /> <span>Add Project</span>
                 </button>
               </div>
             </div>
 
-            <div className={styles.tableCard}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>Project</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Live Link</th>
-                    <th>Order</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {projects.length === 0 ? (
+            {/* Desktop Table View (visible on tablet/desktop) */}
+            <div className={styles.desktopTableContainer}>
+              <div className={styles.tableCard}>
+                <table className={styles.table}>
+                  <thead>
                     <tr>
-                      <td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: 'var(--color-text-dim)' }}>
-                        No projects found in MongoDB Atlas. Click <strong>"Add New Project"</strong> or go to <strong>"Database & Sync"</strong> to seed initial items.
-                      </td>
+                      <th>Project</th>
+                      <th>Category</th>
+                      <th>Status</th>
+                      <th>Live Link</th>
+                      <th>Order</th>
+                      <th>Actions</th>
                     </tr>
-                  ) : (
-                    projects.map((p) => {
-                      const isItemLive = p.isLive !== false;
-                      return (
-                        <tr key={p._id || p.id || p.title}>
-                          <td>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img src={p.image} alt={p.title} className={styles.projectThumb} />
-                              <div>
-                                <div style={{ fontWeight: 600, color: '#fff' }}>{p.title}</div>
-                                <div style={{ fontSize: '12px', color: 'var(--color-text-dim)', maxWidth: '280px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                  {p.description}
+                  </thead>
+                  <tbody>
+                    {projects.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: 'var(--color-text-dim)' }}>
+                          No projects found in MongoDB Atlas. Click <strong>"Add Project"</strong> or go to <strong>"Database & Sync"</strong> to seed initial items.
+                        </td>
+                      </tr>
+                    ) : (
+                      projects.map((p) => {
+                        const isItemLive = p.isLive !== false;
+                        return (
+                          <tr key={p._id || p.id || p.title}>
+                            <td>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src={p.image} alt={p.title} className={styles.projectThumb} />
+                                <div>
+                                  <div style={{ fontWeight: 600, color: '#fff' }}>{p.title}</div>
+                                  <div style={{ fontSize: '12px', color: 'var(--color-text-dim)', maxWidth: '280px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                    {p.description}
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </td>
-                          <td>
-                            <span className={styles.categoryTag}>{p.category}</span>
-                          </td>
-                          <td>
-                            {/* Toggle Button Live / Unlive */}
-                            <button
-                              onClick={() => handleToggleLive(p)}
-                              className={`${styles.liveToggleBtn} ${isItemLive ? styles.liveActive : styles.liveInactive}`}
-                              title={isItemLive ? 'Click to make Unlive (Draft)' : 'Click to make Live (Published)'}
-                              disabled={actionLoading}
-                            >
-                              <span className={styles.liveDot} />
-                              {isItemLive ? (
-                                <>
-                                  <Eye size={12} /> Live
-                                </>
+                            </td>
+                            <td>
+                              <span className={styles.categoryTag}>{p.category}</span>
+                            </td>
+                            <td>
+                              {/* Toggle Button Live / Unlive */}
+                              <button
+                                onClick={() => handleToggleLive(p)}
+                                className={`${styles.liveToggleBtn} ${isItemLive ? styles.liveActive : styles.liveInactive}`}
+                                title={isItemLive ? 'Click to make Unlive (Draft)' : 'Click to make Live (Published)'}
+                                disabled={actionLoading}
+                              >
+                                <span className={styles.liveDot} />
+                                {isItemLive ? (
+                                  <>
+                                    <Eye size={12} /> Live
+                                  </>
+                                ) : (
+                                  <>
+                                    <EyeOff size={12} /> Unlive
+                                  </>
+                                )}
+                              </button>
+                            </td>
+                            <td>
+                              {p.link && p.link !== '#' ? (
+                                <a
+                                  href={p.link}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  style={{ color: '#818cf8', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
+                                >
+                                  Visit <ArrowUpRight size={13} />
+                                </a>
                               ) : (
-                                <>
-                                  <EyeOff size={12} /> Unlive
-                                </>
+                                <span style={{ color: 'var(--color-text-dim)' }}>None</span>
                               )}
-                            </button>
-                          </td>
-                          <td>
-                            {p.link && p.link !== '#' ? (
-                              <a
-                                href={p.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                style={{ color: '#818cf8', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
-                              >
-                                Visit <ArrowUpRight size={13} />
-                              </a>
-                            ) : (
-                              <span style={{ color: 'var(--color-text-dim)' }}>None</span>
-                            )}
-                          </td>
-                          <td>{p.order ?? 0}</td>
-                          <td>
-                            <div className={styles.actionsCell}>
-                              <button
-                                onClick={() => handleOpenEdit(p)}
-                                className={styles.iconBtn}
-                                title="Edit Project"
-                              >
-                                <Edit2 size={14} />
-                              </button>
-                              <button
-                                onClick={() => handleDeleteProject(p)}
-                                className={styles.iconBtn}
-                                style={{ color: '#f87171' }}
-                                title="Delete Project"
-                              >
-                                <Trash2 size={14} />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })
-                  )}
-                </tbody>
-              </table>
+                            </td>
+                            <td>{p.order ?? 0}</td>
+                            <td>
+                              <div className={styles.actionsCell}>
+                                <button
+                                  onClick={() => handleOpenEdit(p)}
+                                  className={styles.iconBtn}
+                                  title="Edit Project"
+                                >
+                                  <Edit2 size={14} />
+                                </button>
+                                <button
+                                  onClick={() => handleDeleteProject(p)}
+                                  className={styles.iconBtn}
+                                  style={{ color: '#f87171' }}
+                                  title="Delete Project"
+                                >
+                                  <Trash2 size={14} />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Mobile Card View (optimized for phone users) */}
+            <div className={styles.mobileCardsList}>
+              {projects.length === 0 ? (
+                <div className={styles.emptyMobileState}>
+                  No projects found. Tap <strong>"Add Project"</strong> to create your first portfolio item.
+                </div>
+              ) : (
+                projects.map((p) => {
+                  const isItemLive = p.isLive !== false;
+                  return (
+                    <div key={p._id || p.id || p.title} className={styles.mobileProjectCard}>
+                      <div className={styles.mobileCardTop}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={p.image} alt={p.title} className={styles.mobileThumb} />
+                        <div className={styles.mobileCardHeading}>
+                          <h4 className={styles.mobileCardTitle}>{p.title}</h4>
+                          <span className={styles.categoryTag}>{p.category}</span>
+                        </div>
+                      </div>
+
+                      <p className={styles.mobileCardDesc}>{p.description}</p>
+
+                      <div className={styles.mobileCardMeta}>
+                        <button
+                          onClick={() => handleToggleLive(p)}
+                          className={`${styles.liveToggleBtn} ${isItemLive ? styles.liveActive : styles.liveInactive}`}
+                          disabled={actionLoading}
+                        >
+                          <span className={styles.liveDot} />
+                          {isItemLive ? (
+                            <>
+                              <Eye size={12} /> Live
+                            </>
+                          ) : (
+                            <>
+                              <EyeOff size={12} /> Unlive (Draft)
+                            </>
+                          )}
+                        </button>
+
+                        {p.link && p.link !== '#' && (
+                          <a
+                            href={p.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.mobileLiveLink}
+                          >
+                            Live Link <ArrowUpRight size={13} />
+                          </a>
+                        )}
+                      </div>
+
+                      <div className={styles.mobileCardActions}>
+                        <button
+                          onClick={() => handleOpenEdit(p)}
+                          className={styles.mobileEditBtn}
+                        >
+                          <Edit2 size={14} /> Edit Project
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProject(p)}
+                          className={styles.mobileDeleteBtn}
+                        >
+                          <Trash2 size={14} /> Delete
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         )}
@@ -660,84 +738,147 @@ export default function AdminDashboard() {
         {activeTab === 'subadmins' && userRole === 'admin' && (
           <div>
             <div className={styles.sectionBar}>
-              <div>
+              <div className={styles.sectionHeading}>
                 <h2 className={styles.sectionTitle}>Sub-Admin Access Control</h2>
-                <p style={{ color: 'var(--color-text-dim)', margin: '4px 0 0', fontSize: '14px' }}>
+                <p className={styles.sectionSub}>
                   Only the Host Admin can authorize or revoke Sub-Admin access for registered users.
                 </p>
               </div>
 
               <div className={styles.barActions}>
                 <button onClick={fetchUsers} className={styles.secondaryBtn} disabled={actionLoading}>
-                  <RefreshCw size={15} /> Refresh Team
+                  <RefreshCw size={15} /> <span>Refresh Team</span>
                 </button>
               </div>
             </div>
 
-            <div className={styles.tableCard}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Email</th>
-                    <th>Current Role</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.map((u) => (
-                    <tr key={u.id}>
-                      <td>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div style={{
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '50%',
-                            background: '#1e293b',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '14px',
-                            fontWeight: 700,
-                            color: '#818cf8'
-                          }}>
-                            {u.name.charAt(0).toUpperCase()}
-                          </div>
-                          <span style={{ fontWeight: 600, color: '#fff' }}>{u.name}</span>
-                        </div>
-                      </td>
-                      <td>{u.email}</td>
-                      <td>
-                        <span className={`${styles.roleBadge} ${u.role === 'admin' ? styles.roleAdmin : u.role === 'sub_admin' ? styles.roleSubAdmin : ''}`} style={u.role === 'user' ? { background: 'rgba(255,255,255,0.05)', color: 'var(--color-text-dim)' } : {}}>
-                          {u.isHostAdmin ? 'HOST ADMIN' : u.role.toUpperCase()}
-                        </span>
-                      </td>
-                      <td>
-                        {u.isHostAdmin || u.role === 'admin' ? (
-                          <span style={{ fontSize: '12px', color: 'var(--color-text-dim)' }}>Host Super Admin (Protected)</span>
-                        ) : u.role === 'sub_admin' ? (
-                          <button
-                            onClick={() => handleToggleSubAdminRole(u)}
-                            className={styles.dangerBtn}
-                            disabled={actionLoading}
-                          >
-                            <UserX size={14} /> Revoke Sub-Admin
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => handleToggleSubAdminRole(u)}
-                            className={styles.primaryBtn}
-                            style={{ padding: '6px 12px', fontSize: '12px' }}
-                            disabled={actionLoading}
-                          >
-                            <UserCheck size={14} /> Grant Sub-Admin Access
-                          </button>
-                        )}
-                      </td>
+            {/* Desktop Table View */}
+            <div className={styles.desktopTableContainer}>
+              <div className={styles.tableCard}>
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Email</th>
+                      <th>Current Role</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {users.map((u) => (
+                      <tr key={u.id}>
+                        <td>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <div style={{
+                              width: '36px',
+                              height: '36px',
+                              borderRadius: '50%',
+                              background: '#1e293b',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '14px',
+                              fontWeight: 700,
+                              color: '#818cf8'
+                            }}>
+                              {u.name.charAt(0).toUpperCase()}
+                            </div>
+                            <span style={{ fontWeight: 600, color: '#fff' }}>{u.name}</span>
+                          </div>
+                        </td>
+                        <td>{u.email}</td>
+                        <td>
+                          <span className={`${styles.roleBadge} ${u.role === 'admin' ? styles.roleAdmin : u.role === 'sub_admin' ? styles.roleSubAdmin : ''}`} style={u.role === 'user' ? { background: 'rgba(255,255,255,0.05)', color: 'var(--color-text-dim)' } : {}}>
+                            {u.isHostAdmin ? 'HOST ADMIN' : u.role.toUpperCase()}
+                          </span>
+                        </td>
+                        <td>
+                          {u.isHostAdmin || u.role === 'admin' ? (
+                            <span style={{ fontSize: '12px', color: 'var(--color-text-dim)' }}>Host Super Admin (Protected)</span>
+                          ) : u.role === 'sub_admin' ? (
+                            <button
+                              onClick={() => handleToggleSubAdminRole(u)}
+                              className={styles.dangerBtn}
+                              disabled={actionLoading}
+                            >
+                              <UserX size={14} /> Revoke Sub-Admin
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => handleToggleSubAdminRole(u)}
+                              className={styles.primaryBtn}
+                              style={{ padding: '6px 12px', fontSize: '12px' }}
+                              disabled={actionLoading}
+                            >
+                              <UserCheck size={14} /> Grant Sub-Admin Access
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Mobile Sub-Admin Card View */}
+            <div className={styles.mobileCardsList}>
+              {users.map((u) => (
+                <div key={u.id} className={styles.mobileUserCard}>
+                  <div className={styles.mobileUserTop}>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      background: '#1e293b',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '15px',
+                      fontWeight: 700,
+                      color: '#818cf8',
+                      flexShrink: 0,
+                    }}>
+                      {u.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontWeight: 600, color: '#fff', fontSize: '15px' }}>{u.name}</div>
+                      <div style={{ fontSize: '13px', color: 'var(--color-text-dim)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {u.email}
+                      </div>
+                    </div>
+                    <span className={`${styles.roleBadge} ${u.role === 'admin' ? styles.roleAdmin : u.role === 'sub_admin' ? styles.roleSubAdmin : ''}`} style={u.role === 'user' ? { background: 'rgba(255,255,255,0.05)', color: 'var(--color-text-dim)' } : {}}>
+                      {u.isHostAdmin ? 'HOST' : u.role.toUpperCase()}
+                    </span>
+                  </div>
+
+                  <div style={{ marginTop: '14px' }}>
+                    {u.isHostAdmin || u.role === 'admin' ? (
+                      <div style={{ fontSize: '12px', color: 'var(--color-text-dim)', textAlign: 'center', padding: '6px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px' }}>
+                        Host Super Admin (Protected)
+                      </div>
+                    ) : u.role === 'sub_admin' ? (
+                      <button
+                        onClick={() => handleToggleSubAdminRole(u)}
+                        className={styles.dangerBtn}
+                        style={{ width: '100%', justifyContent: 'center' }}
+                        disabled={actionLoading}
+                      >
+                        <UserX size={14} /> Revoke Sub-Admin Access
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleToggleSubAdminRole(u)}
+                        className={styles.primaryBtn}
+                        style={{ width: '100%', justifyContent: 'center', padding: '10px' }}
+                        disabled={actionLoading}
+                      >
+                        <UserCheck size={14} /> Grant Sub-Admin Access
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -746,23 +887,17 @@ export default function AdminDashboard() {
         {activeTab === 'system' && userRole === 'admin' && (
           <div>
             <div className={styles.sectionBar}>
-              <div>
+              <div className={styles.sectionHeading}>
                 <h2 className={styles.sectionTitle}>Database Management & Seeding</h2>
-                <p style={{ color: 'var(--color-text-dim)', margin: '4px 0 0', fontSize: '14px' }}>
+                <p className={styles.sectionSub}>
                   Sync and populate all RGB Tech default projects into MongoDB Atlas.
                 </p>
               </div>
             </div>
 
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '18px',
-              padding: '28px',
-              maxWidth: '680px',
-            }}>
+            <div className={styles.systemCard}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
-                <ShieldCheck size={28} color="#818cf8" />
+                <ShieldCheck size={28} color="#818cf8" style={{ flexShrink: 0 }} />
                 <div>
                   <h4 style={{ margin: 0, fontSize: '16px', color: '#fff' }}>MongoDB Atlas Automatic Seeder</h4>
                   <p style={{ margin: 0, fontSize: '13px', color: 'var(--color-text-dim)' }}>
@@ -786,6 +921,7 @@ export default function AdminDashboard() {
               <button
                 onClick={handleSeedDatabase}
                 className={styles.primaryBtn}
+                style={{ width: '100%', justifyContent: 'center' }}
                 disabled={actionLoading}
               >
                 <Database size={16} /> Seed Atlas Database Now
@@ -795,16 +931,16 @@ export default function AdminDashboard() {
         )}
       </main>
 
-      {/* Add / Edit Project Modal */}
+      {/* Add / Edit Project Modal (Super Responsive) */}
       {modalOpen && (
         <div className={styles.modalOverlay} onClick={() => setModalOpen(false)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalHeader}>
               <h3 className={styles.modalTitle}>
-                {editingProject ? 'Edit Project' : 'Add New Portfolio Project'}
+                {editingProject ? 'Edit Project' : 'Add Project'}
               </h3>
-              <button onClick={() => setModalOpen(false)} className={styles.iconBtn}>
-                <X size={16} />
+              <button onClick={() => setModalOpen(false)} className={styles.iconBtn} aria-label="Close modal">
+                <X size={18} />
               </button>
             </div>
 
@@ -879,19 +1015,21 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                <div className={`${styles.formGroup} ${styles.fullWidth}`} style={{ display: 'flex', gap: '24px' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#fff', fontSize: '14px' }}>
+                <div className={`${styles.formGroup} ${styles.fullWidth}`} style={{ display: 'flex', flexDirection: 'column', gap: '12px', background: 'rgba(255,255,255,0.02)', padding: '14px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', color: '#fff', fontSize: '14px' }}>
                     <input
                       type="checkbox"
+                      style={{ width: '18px', height: '18px', accentColor: '#10b981' }}
                       checked={formData.isLive}
                       onChange={(e) => setFormData({ ...formData, isLive: e.target.checked })}
                     />
-                    <span style={{ color: '#34d399', fontWeight: 600 }}>Publish as Live</span>
+                    <span style={{ color: '#34d399', fontWeight: 600 }}>Publish as Live (Visible to public)</span>
                   </label>
 
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#fff', fontSize: '14px' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', color: '#cbd5e1', fontSize: '14px' }}>
                     <input
                       type="checkbox"
+                      style={{ width: '18px', height: '18px', accentColor: '#6366f1' }}
                       checked={formData.featured}
                       onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
                     />
@@ -905,12 +1043,14 @@ export default function AdminDashboard() {
                   type="button"
                   onClick={() => setModalOpen(false)}
                   className={styles.secondaryBtn}
+                  style={{ width: '100%', justifyContent: 'center' }}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   className={styles.primaryBtn}
+                  style={{ width: '100%', justifyContent: 'center' }}
                   disabled={actionLoading}
                 >
                   {actionLoading ? 'Saving...' : editingProject ? 'Save Changes' : 'Create Project'}
