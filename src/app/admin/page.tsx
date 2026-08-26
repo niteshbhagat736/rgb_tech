@@ -281,7 +281,7 @@ export default function AdminDashboard() {
   };
 
   const handleSeedDatabase = async () => {
-    if (!confirm('This will seed the 11 default FasterKart Tech projects into MongoDB Atlas. Continue?')) return;
+    if (!confirm('This will seed the 11 default RGB Tech projects into MongoDB Atlas. Continue?')) return;
 
     setActionLoading(true);
     try {
@@ -345,12 +345,12 @@ export default function AdminDashboard() {
                 <Link href="/" className={styles.logo}>
                   <Image
                     src="/logo.png"
-                    alt="FasterKart Logo"
+                    alt="RGB Tech Logo"
                     width={28}
                     height={28}
                     style={{ borderRadius: '6px', objectFit: 'contain' }}
                   />
-                  FasterKart<span>Admin</span>
+                  RGB<span>Admin</span>
                 </Link>
               </div>
               <div className={styles.headerActions}>
@@ -431,12 +431,12 @@ export default function AdminDashboard() {
               <Link href="/" className={styles.logo}>
                 <Image
                   src="/logo.png"
-                  alt="FasterKart Logo"
+                  alt="RGB Tech Logo"
                   width={28}
                   height={28}
                   style={{ borderRadius: '6px', objectFit: 'contain' }}
                 />
-                FasterKart<span>Admin</span>
+                RGB<span>Admin</span>
               </Link>
               <span className={`${styles.roleBadge} ${userRole === 'admin' ? styles.roleAdmin : styles.roleSubAdmin}`}>
                 {userRole === 'admin' ? 'Host Super Admin' : 'Sub Admin'}
@@ -749,7 +749,7 @@ export default function AdminDashboard() {
               <div>
                 <h2 className={styles.sectionTitle}>Database Management & Seeding</h2>
                 <p style={{ color: 'var(--color-text-dim)', margin: '4px 0 0', fontSize: '14px' }}>
-                  Sync and populate all FasterKart Tech default projects into MongoDB Atlas.
+                  Sync and populate all RGB Tech default projects into MongoDB Atlas.
                 </p>
               </div>
             </div>

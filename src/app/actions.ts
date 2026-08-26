@@ -35,14 +35,14 @@ export async function sendContactEmail(formData: FormData): Promise<SendEmailRes
 
   try {
     const data = await resend.emails.send({
-      from: 'FasterKart Tech Contact <onboarding@resend.dev>',
+      from: 'RGB Tech Contact <onboarding@resend.dev>',
       to: 'tech@fasterkart.com', // ImprovMX forwards this to niteshbhagat726@gmail.com
       replyTo: email,
-      subject: `New Contact Inquiry from ${name}`,
+      subject: `New Contact Inquiry from ${name} [RGB Tech]`,
       text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 10px;">New Contact Inquiry</h2>
+          <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 10px;">New Contact Inquiry - RGB Tech</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
           <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 15px;">
@@ -50,7 +50,7 @@ export async function sendContactEmail(formData: FormData): Promise<SendEmailRes
             <p style="margin-top: 5px; white-space: pre-wrap; line-height: 1.6; color: #333;">${message}</p>
           </div>
           <footer style="margin-top: 20px; font-size: 12px; color: #999; text-align: center;">
-            This email was sent from the contact form on FasterKart Tech website.
+            This email was sent from the contact form on RGB Tech (RGB Graphics Design and Solution).
           </footer>
         </div>
       `,

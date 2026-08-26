@@ -40,7 +40,7 @@ export async function connectToDatabase(): Promise<typeof mongoose | null> {
     const opts = {
       bufferCommands: false,
       maxPoolSize: 10,
-      dbName: 'fasterkart_tech',
+      dbName: process.env.MONGODB_DB_NAME || 'rgb_tech',
       serverSelectionTimeoutMS: 8000,
     };
 

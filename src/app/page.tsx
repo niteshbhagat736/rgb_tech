@@ -10,16 +10,16 @@ import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'FasterKart Tech | Digital Transformation & Custom Software Development',
-  description: 'Accelerate your digital growth with FasterKart Tech. We develop custom software, high-performance web applications, mobile apps, and scalable AI solutions tailored to your business needs.',
+  title: 'RGB Tech | Digital Transformation & Custom Software Development',
+  description: 'Accelerate your digital growth with RGB Tech (a unit of RGB Graphics Design and Solution). We develop custom software, high-performance web applications, mobile apps, and scalable AI solutions tailored to your business needs.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'FasterKart Tech | Custom Software Development Agency',
+    title: 'RGB Tech | Custom Software Development Agency',
     description: 'We develop custom software, high-performance web applications, mobile apps, and scalable AI solutions.',
     url: '/',
-    siteName: 'FasterKart Tech',
+    siteName: 'RGB Tech',
     type: 'website',
   },
 };

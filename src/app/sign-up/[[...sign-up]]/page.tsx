@@ -59,12 +59,12 @@ export default function SignUpPage() {
         }}>
           <Image
             src="/logo.png"
-            alt="FasterKart Logo"
+            alt="RGB Tech Logo"
             width={22}
             height={22}
             style={{ borderRadius: '4px', objectFit: 'contain' }}
           />
-          FasterKart Tech Portal
+          RGB Tech Portal
         </div>
         <h1 style={{
           fontSize: '28px',

@@ -8,14 +8,14 @@ import { Project } from '@/models/Project';
 import { defaultProjects, PortfolioProject } from '@/lib/defaultProjects';
 
 export const metadata: Metadata = {
-  title: 'Our Portfolio | Case Studies & Client Projects | FasterKart Tech',
-  description: 'Explore FasterKart Tech\'s successful software projects and case studies, including custom enterprise ERPs, high-converting e-commerce sites, food delivery networks, and advanced AI-powered tools.',
+  title: 'Our Portfolio | Case Studies & Client Projects | RGB Tech',
+  description: 'Explore RGB Tech\'s successful software projects and case studies, including custom enterprise ERPs, high-converting e-commerce sites, food delivery networks, and advanced AI-powered tools.',
   alternates: {
     canonical: '/portfolio',
   },
   openGraph: {
-    title: 'Client Work & Portfolio | FasterKart Tech',
-    description: 'Explore our latest software products, web applications, and digital systems built for global clients.',
+    title: 'Client Work & Portfolio | RGB Tech',
+    description: 'Explore our latest software products, web applications, and digital systems built for global clients by RGB Tech (RGB Graphics Design and Solution).',
     url: '/portfolio',
     type: 'website',
   },

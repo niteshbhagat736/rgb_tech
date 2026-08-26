@@ -31,13 +31,13 @@ export default function Navbar() {
         <Link href="/" className={styles.logo}>
           <Image
             src="/logo.png"
-            alt="FasterKart Tech Logo"
+            alt="RGB Tech Logo"
             width={32}
             height={32}
             style={{ borderRadius: '8px', objectFit: 'contain' }}
             priority
           />
-          FasterKart<span className={styles.logoAccent}>Tech</span>
+          RGB<span className={styles.logoAccent}>Tech</span>
         </Link>
 
         <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>

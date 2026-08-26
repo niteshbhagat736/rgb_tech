@@ -6,7 +6,7 @@ import styles from './Testimonials.module.css';
 
 const testimonials = [
   {
-    quote: `FasterKart Tech completely transformed our hospital's patient management. The system is intuitive, fast, and our staff adopted it within a week.`,
+    quote: `RGB Tech completely transformed our hospital's patient management. The system is intuitive, fast, and our staff adopted it within a week.`,
     name: 'Dr. Ramesh Patel',
     role: 'Director, City Health Clinic',
     avatar: <User size={24} />,

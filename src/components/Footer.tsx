@@ -39,16 +39,19 @@ export default function Footer() {
             <div className={styles.logo} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <Image
                 src="/logo.png"
-                alt="FasterKart Tech Logo"
+                alt="RGB Tech Logo"
                 width={30}
                 height={30}
                 style={{ borderRadius: '8px', objectFit: 'contain' }}
               />
-              FasterKart<span className={styles.logoAccent}>Tech</span>
+              RGB<span className={styles.logoAccent}>Tech</span>
             </div>
             <p className={styles.tagline}>
               We build digital products that transform businesses — websites, mobile apps,
               software, and AI solutions, all under one roof.
+            </p>
+            <p style={{ fontSize: '12px', color: 'var(--color-text-dim)', marginTop: '8px', lineHeight: 1.4 }}>
+              RGB Tech is a specialized unit of <strong>RGB Graphics Design and Solution</strong>.
             </p>
             <div className={styles.socials}>
               {['LinkedIn', 'Twitter', 'Instagram', 'GitHub'].map((s) => (
@@ -77,12 +80,12 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <span className={styles.copyright}>
-            © {new Date().getFullYear()} FasterKart Tech. All rights reserved.
+            © {new Date().getFullYear()} RGB Tech. A brand under <strong>RGB Graphics Design and Solution</strong>. All rights reserved.
           </span>
           <div className={styles.bottomLinks}>
-            <Link href="#" className={styles.link}>Privacy Policy</Link>
-            <Link href="#" className={styles.link}>Terms of Service</Link>
-            <Link href="#" className={styles.link}>Sitemap</Link>
+            <Link href="/privacy" className={styles.link}>Privacy Policy</Link>
+            <Link href="/terms" className={styles.link}>Terms of Service</Link>
+            <Link href="/sitemap.xml" className={styles.link}>Sitemap</Link>
           </div>
         </div>
       </div>

@@ -6,22 +6,22 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fasterkart.tech'),
-  title: "FasterKart Tech | Digital Transformation & Software Development Agency",
+  title: "RGB Tech | Digital Transformation & Software Development Agency",
   description:
-    "We build modern websites, mobile apps, AI solutions, and enterprise software that transform businesses and accelerate digital growth.",
+    "RGB Tech (under RGB Graphics Design and Solution) builds modern websites, mobile apps, AI solutions, and enterprise software that transform businesses and accelerate digital growth.",
   keywords:
-    "software development, web development, mobile app development, AI solutions, digital transformation, Next.js, React, MERN stack",
+    "RGB Tech, RGB Graphics Design and Solution, software development, web development, mobile app development, AI solutions, digital transformation, Next.js, React, MERN stack",
   icons: {
     icon: '/logo.png',
     shortcut: '/logo.png',
     apple: '/logo.png',
   },
   openGraph: {
-    title: "FasterKart Tech | Digital Transformation Agency",
+    title: "RGB Tech | Digital Transformation Agency",
     description:
-      "We build modern websites, mobile apps, AI solutions & enterprise software.",
+      "We build modern websites, mobile apps, AI solutions & enterprise software under RGB Graphics Design and Solution.",
     url: "/",
-    siteName: "FasterKart Tech",
+    siteName: "RGB Tech",
     type: "website",
   },
 };
