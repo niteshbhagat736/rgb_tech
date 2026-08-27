@@ -73,10 +73,9 @@ export default function Hero() {
 
         <div className={styles.stats}>
           {[
-            { value: '200+', label: 'Projects Delivered' },
-            { value: '50+', label: 'Happy Clients' },
-            { value: '4', label: 'Countries Served' },
-            { value: '5+', label: 'Years Experience' },
+            { value: '90+', label: 'Projects Delivered' },
+            { value: '80+', label: 'Happy Clients' },
+            { value: '3+', label: 'Years Experience' },
           ].map((s) => (
             <div key={s.label} className={styles.statItem}>
               <span className={styles.statValue}>{s.value}</span>

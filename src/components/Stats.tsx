@@ -5,9 +5,9 @@ import { Rocket, Handshake, Star, Target, RefreshCw, Zap, ShieldCheck, MessageCi
 import styles from './Stats.module.css';
 
 const stats = [
-  { value: 100, suffix: '+', label: 'Projects Delivered', icon: <Rocket size={24} />, desc: 'Across web, mobile & software' },
+  { value: 90, suffix: '+', label: 'Projects Delivered', icon: <Rocket size={24} />, desc: 'Across web, mobile & software' },
   { value: 80, suffix: '+', label: 'Happy Clients', icon: <Handshake size={24} />, desc: 'Businesses transformed globally' },
-  { value: 2, suffix: '+', label: 'Years Experience', icon: <Star size={24} />, desc: 'Building digital products' },
+  { value: 3, suffix: '+', label: 'Years Experience', icon: <Star size={24} />, desc: 'Building digital products' },
 ];
 
 function AnimatedCounter({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
